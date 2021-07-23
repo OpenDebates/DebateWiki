@@ -24,19 +24,15 @@ def start(**kwargs):
         root_logger.setLevel("INFO")
     # Config Loader
     try:
-        if kwargs['config_file']:
+        if kwargs["config_file"]:
             config = toml.load(kwargs["config_file"])
         else:
             raise ArgumentNotFoundError(message="--config argument not passed.")
     except FileNotFoundError:
-        logger.error(
-            "A config.toml file is required."
-        )
+        logger.error("A config.toml file is required.")
         sys.exit()
     except ArgumentNotFoundError:
-        logger.error(
-            "--config argument is required."
-        )
+        logger.error("--config argument is required.")
         sys.exit()
 
     # Override configs from config file with ones from cli

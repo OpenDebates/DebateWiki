@@ -23,9 +23,9 @@ import sys
 
 import DebateWiki
 
-project = 'Debate Wiki'
-copyright = '2021, Taven'
-author = 'Taven'
+project = "Debate Wiki"
+copyright = "2021, Taven"
+author = "Taven"
 
 # The full version, including alpha/beta/rc tags
 release = DebateWiki.__version__
@@ -55,8 +55,9 @@ except FileNotFoundError:
     pass
 
 try:
-    import sphinx
     from distutils.version import LooseVersion
+
+    import sphinx
 
     cmd_line_template = (
         "sphinx-apidoc --implicit-namespaces -f -o {outputdir} {moduledir}"
@@ -78,29 +79,29 @@ except Exception as e:
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.extlinks',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.napoleon',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.extlinks",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.napoleon",
 ]
 
-autodoc_member_order = 'bysource'
-autodoc_typehints = 'none'
+autodoc_member_order = "bysource"
+autodoc_typehints = "none"
 
 # Links used for cross-referencing stuff in other documentation
 intersphinx_mapping = {
-    'py': ('https://docs.python.org/3', None),
-    'aio': ('https://docs.aiohttp.org/en/stable/', None),
-    'req': ('https://docs.python-requests.org/en/latest/', None)
+    "py": ("https://docs.python.org/3", None),
+    "aio": ("https://docs.aiohttp.org/en/stable/", None),
+    "req": ("https://docs.python-requests.org/en/latest/", None),
 }
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -115,10 +116,11 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 try:
     import sphinx_rtd_theme
+
     html_theme = "sphinx_rtd_theme"
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 except ImportError:
-    html_theme = 'alabaster'
+    html_theme = "alabaster"
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
@@ -126,6 +128,6 @@ pygments_style = "sphinx"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
 python_version = ".".join(map(str, sys.version_info[0:2]))

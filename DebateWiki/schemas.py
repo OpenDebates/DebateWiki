@@ -1,4 +1,4 @@
-from schema import Schema, Or
+from schema import Or, Schema
 
 config_schema = Schema(
     {

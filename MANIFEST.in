@@ -12,7 +12,9 @@ include README.md
 
 include CODE_OF_CONDUCT.md
 
-include tox.ini .travis.yml .readthedocs.yml
+include tox.ini .readthedocs.yml
+
+exclude setup.py
 
 recursive-include .github *
 

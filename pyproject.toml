@@ -1,0 +1,93 @@
+[tool.poetry]
+name = "DebateWiki"
+version = "0.1.0-alpha.0"
+description = "A wiki that only allows valid arguments to make it into its pages."
+authors = ["Taven <taven@outlook.in>"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/OpenDebates/DebateWiki"
+repository = "https://github.com/OpenDebates/DebateWiki"
+documentation = "https://debatewiki.readthedocs.io"
+keywords = [
+    "wiki",
+    "debate",
+    "fastapi",
+    "logic"
+]
+classifiers = [
+    "Development Status :: 1 - Planning",
+	"Environment :: Web Environment",
+	"Framework :: AsyncIO",
+	"Intended Audience :: End Users/Desktop",
+	"License :: OSI Approved :: Apache Software License",
+	"Natural Language :: English",
+	"Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Wiki"
+]
+packages = [
+    { include = "DebateWiki" }
+]
+include = [
+    ".bumpversion.cfg",
+    ".coveragerc",
+    ".editorconfig",
+    ".readthedocs.yml",
+    "AUTHORS.rst",
+    "CODE_OF_CONDUCT.md",
+    "MANIFEST.in",
+    "docs/*",
+    "tests/*",
+    "tox.ini",
+    "poetry.lock"
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+toml = "^0.10.2"
+schema = "^0.7.4"
+uvloop = {version = "^0.15.3", optional = true}
+Jinja2 = "^3.0.1"
+
+[tool.poetry.dev-dependencies]
+Sphinx = "^4.0.2"
+sphinx-rtd-theme = "^0.5.2"
+pytest = "^6.2.4"
+pytest-cov = "^2.12.1"
+tox = "^3.23.1"
+check-manifest = "^0.46"
+pylama = "^7.7.1"
+readme-renderer = {extras = ["md"], version = "^29.0"}
+Pygments = "^2.9.0"
+isort = "^5.9.1"
+twine = "^3.4.1"
+codecov = "^2.1.11"
+bump2version = "^1.0.1"
+black = "^21.7b0"
+
+[tool.poetry.scripts]
+DebateWiki = 'DebateWiki.__main__:main'
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra --strict-markers --ignore=docs/conf.py --ignore=setup.py --ignore=ci --ignore=.eggs --doctest-modules --doctest-glob=/*.rst --tb=short"
+norecursedirs = [
+	".git",
+	".tox",
+	".env",
+	"dist",
+	"build",
+	"migrations"
+]
+testpaths = [
+    "tests"
+]
+python_files = [
+	"test_*.py",
+	"*_test.py",
+	"tests.py"
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

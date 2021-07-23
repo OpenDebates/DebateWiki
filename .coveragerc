@@ -1,0 +1,23 @@
+[paths]
+source = DebateWiki
+
+[run]
+branch = true
+source =
+    DebateWiki
+parallel = true
+
+[report]
+show_missing = true
+precision = 2
+omit = *migrations*
+exclude_lines =
+    pragma: no cover
+
+    def __repr__
+
+    raise AssertionError
+    raise NotImplementedError
+
+    if 0:
+    if __name__ == .__main__.:

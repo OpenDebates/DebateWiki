@@ -129,11 +129,7 @@ def start(**kwargs):
     config_schema.validate(config)
 
     logger.configure(
-        handlers=[
-            {"sink": sys.stdout, "level": config["api"]["log_level"].upper()},
-            {"sink": "uvicorn.error", "level": config["api"]["log_level"].upper()},
-            {"sink": "uvicorn.access", "level": config["api"]["log_level"].upper()},
-        ]
+        handlers=[{"sink": sys.stdout, "level": config["api"]["log_level"].upper()}]
     )
 
     logger.info(f"Starting Debate Wiki: {DebateWiki.__version__}")

@@ -11,6 +11,8 @@ config_schema = Schema(
                 "ERROR",
                 "CRITICAL",
             ),
+            "jwt_secret": str,
+            "database_url": str
         }
     }
 )

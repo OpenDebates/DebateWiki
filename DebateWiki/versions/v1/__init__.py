@@ -23,12 +23,8 @@ async def create_user(user: UserIn_Pydantic):
 @router.get(
     "/user/{user_id}",
     response_model=User_Pydantic,
-    responses={
-        404: {
-            "model": HTTPNotFoundError
-        }
-    },
-    tags=["Users"]
+    responses={404: {"model": HTTPNotFoundError}},
+    tags=["Users"],
 )
 @version(1)
 async def get_user(user_id: int):
@@ -38,12 +34,8 @@ async def get_user(user_id: int):
 @router.put(
     "/user/{user_id}",
     response_model=User_Pydantic,
-    responses={
-        404: {
-            "model": HTTPNotFoundError
-        }
-    },
-    tags=["Users"]
+    responses={404: {"model": HTTPNotFoundError}},
+    tags=["Users"],
 )
 @version(1)
 async def update_user(user_id: int, user: UserIn_Pydantic):
@@ -54,12 +46,8 @@ async def update_user(user_id: int, user: UserIn_Pydantic):
 @router.delete(
     "/user/{user_id}",
     response_model=Status,
-    responses={
-        404: {
-            "model": HTTPNotFoundError
-        }
-    },
-    tags=["Users"]
+    responses={404: {"model": HTTPNotFoundError}},
+    tags=["Users"],
 )
 @version(1)
 async def delete_user(user_id: int):

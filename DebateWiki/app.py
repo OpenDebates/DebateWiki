@@ -54,7 +54,9 @@ class InterceptHandler(logging.Handler):
             frame = frame.f_back
             depth += 1
 
-        logger.opt(depth=depth, exception=record.exc_info).log(level, record.getMessage())
+        logger.opt(depth=depth, exception=record.exc_info).log(
+            level, record.getMessage()
+        )
 
 
 # Intercept everything at the root logger
@@ -67,29 +69,25 @@ for name in logging.root.manager.loggerDict.keys():
     logging.getLogger(name).propagate = True
 
 # Create App Instance
-app = FastAPI(title='Debate Wiki')
+app = FastAPI(title="Debate Wiki")
 
 # Config
 config = {}
 
 # Format Versioning of API
-app = VersionedFastAPI(
-    app,
-    version_format='{major}',
-    prefix_format='/api/v{major}'
-)
+app = VersionedFastAPI(app, version_format="{major}", prefix_format="/api/v{major}")
 
 # Include Version Routers
 app.include_router(v1.router)
 
 # Mount Files
-static_folder = 'Frontend/dist/'
+static_folder = "Frontend/dist/"
 app.mount("/static", StaticFiles(directory=f"{static_folder}"), name="static")
 
 
 @app.get("/", response_class=FileResponse)
 def read_index(request: Request):
-    index = f'{static_folder}/index.html'
+    index = f"{static_folder}/index.html"
     return FileResponse(index)
 
 
@@ -101,7 +99,7 @@ def read_index(request: Request):
     if os.path.exists(file):
         return FileResponse(file)
 
-    index = f'{static_folder}/index.html'
+    index = f"{static_folder}/index.html"
     return FileResponse(index)
 
 
@@ -132,18 +130,9 @@ def start(**kwargs):
 
     logger.configure(
         handlers=[
-            {
-                "sink": sys.stdout,
-                "level": config["api"]["log_level"].upper()
-            },
-            {
-                "sink": "uvicorn.error",
-                "level": config["api"]["log_level"].upper()
-            },
-            {
-                "sink": "uvicorn.access",
-                "level": config["api"]["log_level"].upper()
-            }
+            {"sink": sys.stdout, "level": config["api"]["log_level"].upper()},
+            {"sink": "uvicorn.error", "level": config["api"]["log_level"].upper()},
+            {"sink": "uvicorn.access", "level": config["api"]["log_level"].upper()},
         ]
     )
 
@@ -159,10 +148,10 @@ def start(**kwargs):
 
     register_tortoise(
         app,
-        db_url=config['api']['database_url'],
+        db_url=config["api"]["database_url"],
         modules={"models": ["DebateWiki.models"]},
         generate_schemas=True,
-        add_exception_handlers=True
+        add_exception_handlers=True,
     )
 
     uvicorn.run(
@@ -172,7 +161,7 @@ def start(**kwargs):
         debug=True,
         log_config=UVICORN_LOGGING_CONFIG,
         log_level=config["api"]["log_level"].lower(),
-        reload=True
+        reload=True,
     )
 
 

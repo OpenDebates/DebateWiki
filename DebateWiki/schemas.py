@@ -12,7 +12,7 @@ config_schema = Schema(
                 "CRITICAL",
             ),
             "jwt_secret": str,
-            "database_url": str
+            "database_url": str,
         }
     }
 )

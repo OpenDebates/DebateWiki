@@ -1,6 +1,6 @@
 graft docs
-graft opendebates
-graft plugins
+graft DebateWiki
+graft Frontend
 
 include .editorconfig
 

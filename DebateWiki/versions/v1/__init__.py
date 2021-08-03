@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi_versioning import version
 from tortoise.contrib.fastapi import HTTPNotFoundError
 
-from DebateWiki.models import User_Pydantic, Users, UserIn_Pydantic, Status
+from DebateWiki.models import Status, User_Pydantic, UserIn_Pydantic, Users
 
 router = APIRouter()
 

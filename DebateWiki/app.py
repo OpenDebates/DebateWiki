@@ -78,7 +78,7 @@ config = {}
 app = VersionedFastAPI(app, version_format="{major}", prefix_format="/api/v{major}")
 
 # Include Version Routers
-app.include_router(v1.router)
+app.include_router(v1.users.router)
 
 # Mount Files
 static_folder = "Frontend/dist/"

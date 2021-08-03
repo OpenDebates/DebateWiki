@@ -25,10 +25,10 @@ class Users(models.Model):
         exclude = ["password_hash"]
 
 
+# Pydantic Models
 User_Pydantic = pydantic_model_creator(Users, name="User")
 UserIn_Pydantic = pydantic_model_creator(Users, name="UserIn", exclude_readonly=True)
 
 
-# Status
 class Status(BaseModel):
     message: str

@@ -39,7 +39,8 @@ include = [
     "docs/*",
     "tests/*",
     "tox.ini",
-    "poetry.lock"
+    "poetry.lock",
+    "Frontend/*"
 ]
 
 [tool.poetry.dependencies]

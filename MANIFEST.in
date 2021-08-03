@@ -17,6 +17,7 @@ include tox.ini .readthedocs.yml
 exclude setup.py
 
 recursive-include .github *
+recursive-include Frontend *
 
 recursive-exclude docs/_build *
 

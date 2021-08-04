@@ -13,6 +13,8 @@ config_schema = Schema(
             ),
             "jwt_secret": str,
             "database_url": str,
+            "reset_secret": str,
+            "verify_secret": str,
         }
     }
 )

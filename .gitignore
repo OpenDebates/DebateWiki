@@ -106,7 +106,10 @@ venv.bak/
 .mypy_cache/
 
 # Debate Wiki Configuration Files
-config.toml
+/config.toml
+/config.py
+
+# Logs
 .logs/
 
 # Frontend

@@ -33,9 +33,6 @@ jobs:
           run: |
               poetry install
               source $VENV
-              poetry build
-              poetry run twine check dist/*
-              poetry run check-manifest
               poetry run pylama -l "pycodestyle" DebateWiki tests
               poetry run isort --verbose --check-only --diff DebateWiki
               poetry run sphinx-build -E -b html docs tox_temps/docs

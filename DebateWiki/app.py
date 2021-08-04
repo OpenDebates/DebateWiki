@@ -3,7 +3,6 @@ import logging
 import os
 import sys
 
-import toml
 import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse
@@ -13,11 +12,10 @@ from loguru import logger
 from tortoise.contrib.fastapi import register_tortoise
 
 import DebateWiki
-from DebateWiki.exceptions import ArgumentNotFoundError
+from DebateWiki import config
 from DebateWiki.schemas import config_schema
 from DebateWiki.versions import v1
 
-# Logging
 UVICORN_LOGGING_CONFIG = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -69,10 +67,7 @@ for name in logging.root.manager.loggerDict.keys():
     logging.getLogger(name).propagate = True
 
 # Create App Instance
-app = FastAPI(title="Debate Wiki")
-
-# Config
-config = {}
+app = FastAPI(title="Debate Wiki", version=DebateWiki.__version__)
 
 # Format Versioning of API
 app = VersionedFastAPI(app, version_format="{major}", prefix_format="/api/v{major}")
@@ -107,19 +102,6 @@ def start(**kwargs):
     """
     Starts the bot and obtains all necessary config data.
     """
-    # Config Loader
-    try:
-        if kwargs["config_file"]:
-            global config
-            config = toml.load(kwargs["config_file"])
-        else:
-            raise ArgumentNotFoundError(message="--config argument not passed.")
-    except FileNotFoundError:
-        logger.error("A config.toml file is required.")
-        sys.exit()
-    except ArgumentNotFoundError:
-        logger.error("--config argument is required.")
-        sys.exit()
 
     # Override configs from config file with ones from cli
     if kwargs["log_level"]:
@@ -145,19 +127,18 @@ def start(**kwargs):
     register_tortoise(
         app,
         db_url=config["api"]["database_url"],
-        modules={"models": ["DebateWiki.models"]},
+        modules={"models": ["DebateWiki.models", "aerich.models"]},
         generate_schemas=True,
         add_exception_handlers=True,
     )
 
     uvicorn.run(
-        "DebateWiki.app:app",
+        app=app,
         host="127.0.0.1",
         port=5000,
-        debug=True,
+        debug=config["api"]["debug"],
         log_config=UVICORN_LOGGING_CONFIG,
         log_level=config["api"]["log_level"].lower(),
-        reload=True,
     )
 
 

@@ -56,6 +56,7 @@ asyncpg = "^0.23.0"
 tortoise-orm = {extras = ["asyncpg"], version = "^0.17.5"}
 aerich = "^0.5.4"
 loguru = "^0.5.3"
+fastapi-users = {extras = ["tortoise-orm"], version = "^6.1.1"}
 
 [tool.poetry.dev-dependencies]
 Sphinx = "^4.0.2"

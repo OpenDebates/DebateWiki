@@ -9,13 +9,6 @@ class StartCommand(CommandFactory):
         self.parser = parser.add_parser(*args, **kwargs)
         self.parser.set_defaults(action=self.run)
 
-        # Config File
-        self.parser.add_argument(
-            "--config",
-            type=argparse.FileType("r"),
-            help="give a path to custom config file",
-        )
-
         # Set Logging Levels
         self.choices = [
             "debug",
@@ -29,9 +22,7 @@ class StartCommand(CommandFactory):
         )
 
     def run(self, *sys_args, **kwargs):
-        passed_args = {"config_file": None, "log_level": None}
-        if sys_args[0].config:
-            passed_args["config_file"] = sys_args[0].config
+        passed_args = {"log_level": None}
         if sys_args[0].log:
             passed_args["log_level"] = sys_args[0].log
 

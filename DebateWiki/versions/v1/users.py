@@ -5,6 +5,7 @@ from fastapi_users import FastAPIUsers, InvalidPasswordException
 from fastapi_users.authentication import JWTAuthentication
 from fastapi_users.db import TortoiseUserDatabase
 
+from loguru import logger
 from DebateWiki import config
 from DebateWiki.models import User, UserCreate, UserDB, UserModel, UserUpdate
 
@@ -46,25 +47,25 @@ async def refresh_jwt(
 
 
 def on_after_register(user: UserDB, request: Request):
-    print(f"User {user.id} has registered.")
+    logger.info(f"User {user.id} has registered.")
 
 
 def on_after_forgot_password(user: UserDB, token: str, request: Request):
-    print(f"User {user.id} has forgot their password. Reset token: {token}")
+    logger.info(f"User {user.id} has forgot their password. Reset token: {token}")
 
 
 def on_after_reset_password(user: UserDB, request: Request):
-    print(f"User {user.id} has reset their password.")
+    logger.info(f"User {user.id} has reset their password.")
 
 
 def on_after_update(user: UserDB, updated_user_data: Dict[str, Any], request: Request):
-    print(
+    logger.info(
         f"User {user.id} has been updated with the following data: {updated_user_data}"
     )
 
 
 def after_verification_request(user: UserDB, token: str, request: Request):
-    print(f"Verification requested for user {user.id}. Verification token: {token}")
+    logger.info(f"Verification requested for user {user.id}. Verification token: {token}")
 
 
 router.include_router(

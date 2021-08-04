@@ -28,7 +28,7 @@ copyright = "2021, Taven"
 author = "Taven"
 
 # The full version, including alpha/beta/rc tags
-release = DebateWiki.__version__
+release = "0.1.0-alpha.0"
 
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running

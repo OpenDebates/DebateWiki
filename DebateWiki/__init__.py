@@ -1,6 +1,5 @@
 __version__ = "0.1.0-alpha.0"
 
-# Config Loader
 import sys
 
 import toml

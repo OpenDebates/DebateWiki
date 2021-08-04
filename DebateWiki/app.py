@@ -7,7 +7,6 @@ import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi_versioning import VersionedFastAPI
 from loguru import logger
 from tortoise.contrib.fastapi import register_tortoise
 
@@ -68,9 +67,6 @@ for name in logging.root.manager.loggerDict.keys():
 
 # Create App Instance
 app = FastAPI(title="Debate Wiki", version=DebateWiki.__version__)
-
-# Format Versioning of API
-app = VersionedFastAPI(app, version_format="{major}", prefix_format="/api/v{major}")
 
 # Include Version Routers
 app.include_router(v1.users.router)

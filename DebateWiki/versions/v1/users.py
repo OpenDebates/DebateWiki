@@ -8,7 +8,7 @@ from fastapi_users.db import TortoiseUserDatabase
 from DebateWiki import config
 from DebateWiki.models import User, UserCreate, UserDB, UserModel, UserUpdate
 
-router = APIRouter()
+router = APIRouter(prefix="/api/v1")
 
 
 # Instantiate User DB
@@ -38,7 +38,7 @@ fastapi_users = FastAPIUsers(
 )
 
 
-@router.post("/api/v1/auth/jwt/refresh", tags=["Authentication"])
+@router.post("/auth/jwt/refresh", tags=["Authentication"])
 async def refresh_jwt(
     response: Response, user=Depends(fastapi_users.get_current_active_user)
 ):

@@ -451,18 +451,6 @@ sqlalchemy = ["sqlalchemy (>=1.3.13,<1.4)", "databases (>=0.3.0,<0.5)"]
 tortoise-orm = ["tortoise-orm (>=0.16.0,<0.18.0)"]
 
 [[package]]
-name = "fastapi-versioning"
-version = "0.9.1"
-description = "api versioning for fastapi web applications"
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-fastapi = ">=0.56.0"
-starlette = "*"
-
-[[package]]
 name = "filelock"
 version = "3.0.12"
 description = "A platform independent file lock."
@@ -1323,7 +1311,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "571d78dba882b0a2241f8d851c19ee5b2e3bea2156b5ea0b457439332d421bac"
+content-hash = "cddc9b1ffa3c1c325218191a9718780325756af188e3ff5f75e7893d6bdd9558"
 
 [metadata.files]
 aerich = [
@@ -1639,10 +1627,6 @@ fastapi = [
 fastapi-users = [
     {file = "fastapi-users-6.1.1.tar.gz", hash = "sha256:6b4ae936bbe967bb41babc17a1eac8dedff3237153b96a661a11098ceec20a5c"},
     {file = "fastapi_users-6.1.1-py3-none-any.whl", hash = "sha256:c185b57509a1b366c47719faffa5dc68e712449b0a48d242f1e6ecf24f2c6449"},
-]
-fastapi-versioning = [
-    {file = "fastapi_versioning-0.9.1-py3-none-any.whl", hash = "sha256:bc46dd973214a82edb6a2effd660825285261e906ee1d4f72c61944ffd4fa491"},
-    {file = "fastapi_versioning-0.9.1.tar.gz", hash = "sha256:d16fd5de813d608c5ce244399b7a68178477379488cb8f75f588950e5c48a2ac"},
 ]
 filelock = [
     {file = "filelock-3.0.12-py3-none-any.whl", hash = "sha256:929b7d63ec5b7d6b71b0fa5ac14e030b3f70b75747cef1b10da9b879fef15836"},

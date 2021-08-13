@@ -72,7 +72,7 @@ app = FastAPI(title="Debate Wiki", version=DebateWiki.__version__)
 app.include_router(v1.users.router)
 
 # Mount Files
-static_folder = "Frontend/dist/"
+static_folder = "frontend/dist/"
 app.mount("/static", StaticFiles(directory=f"{static_folder}"), name="static")
 
 

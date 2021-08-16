@@ -65,7 +65,9 @@ def on_after_update(user: UserDB, updated_user_data: Dict[str, Any], request: Re
 
 
 def after_verification_request(user: UserDB, token: str, request: Request):
-    logger.info(f"Verification requested for user {user.id}. Verification token: {token}")
+    logger.info(
+        f"Verification requested for user {user.id}. Verification token: {token}"
+    )
 
 
 router.include_router(

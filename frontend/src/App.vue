@@ -1,27 +1,42 @@
 <template>
-  <div id="nav"></div>
-  <router-view />
+  <n-config-provider
+    style="width: 100%; height: 100%"
+    :theme="getTheme"
+    :theme-overrides="themeOverrides"
+  >
+    <n-notification-provider>
+      <router-view />
+      <n-global-style />
+    </n-notification-provider>
+  </n-config-provider>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { computed, defineComponent } from "vue";
+import {
+  darkTheme,
+  NConfigProvider,
+  NGlobalStyle,
+  NNotificationProvider,
+} from "naive-ui";
+import { useStore } from "vuex";
 
-#nav {
-  padding: 30px;
+export default defineComponent({
+  name: "Home",
+  components: {
+    NConfigProvider,
+    NNotificationProvider,
+    NGlobalStyle,
+  },
+  setup() {
+    const store = useStore();
+    const themeOverrides = store.state.theme.getOverrides;
+    const getTheme = computed(() =>
+      store.state.theme.dark ? darkTheme : undefined
+    );
+    return { themeOverrides, getTheme };
+  },
+});
+</script>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<style lang="scss"></style>

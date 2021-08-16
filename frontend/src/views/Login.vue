@@ -99,7 +99,7 @@ export default defineComponent({
       password: [
         {
           required: true,
-          message: "Password is required",
+          message: "Password is required.",
         },
       ],
     });

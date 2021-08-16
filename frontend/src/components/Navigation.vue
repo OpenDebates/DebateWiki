@@ -30,12 +30,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { NButton, NSpace } from "naive-ui";
+import { NButton, NIcon, NSpace } from "naive-ui";
 import { Login, Logout } from "@vicons/tabler";
 
 export default defineComponent({
   name: "Navigation",
-  components: { NButton, NSpace, Login, Logout },
+  components: { NButton, NSpace, Login, Logout, NIcon },
   props: ["isLoggedIn"],
   setup(props) {
     function loginText(): string {

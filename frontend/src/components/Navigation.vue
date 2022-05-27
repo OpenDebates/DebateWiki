@@ -34,7 +34,7 @@ import { NButton, NIcon, NSpace } from "naive-ui";
 import { Login, Logout } from "@vicons/tabler";
 
 export default defineComponent({
-  name: "Navigation",
+  name: "GlobalNavigation",
   components: { NButton, NSpace, Login, Logout, NIcon },
   props: ["isLoggedIn"],
   setup(props) {

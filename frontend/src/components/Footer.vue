@@ -6,7 +6,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Footer",
+  name: "GlobalFooter",
   components: {},
   setup(props, context) {
     return {};

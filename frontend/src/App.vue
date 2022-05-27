@@ -22,7 +22,7 @@ import {
 import { useStore } from "vuex";
 
 export default defineComponent({
-  name: "Home",
+  name: "GlobalApp",
   components: {
     NConfigProvider,
     NNotificationProvider,

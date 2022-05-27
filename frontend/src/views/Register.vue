@@ -72,7 +72,7 @@ import {
 import { Login as LoginIcon } from "@vicons/tabler";
 
 export default defineComponent({
-  name: "Login",
+  name: "GlobalLogin",
   components: {
     Footer,
     NSpace,

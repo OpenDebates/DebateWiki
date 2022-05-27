@@ -32,7 +32,9 @@
                 </template>
                 Login
               </n-button>
-              <n-button dashed @click="$router.push('register')">Register</n-button>
+              <n-button dashed @click="$router.push('register')"
+                >Register</n-button
+              >
             </n-space>
           </n-space>
         </n-card>
@@ -59,7 +61,7 @@ import {
 import { Login as LoginIcon } from "@vicons/tabler";
 
 export default defineComponent({
-  name: "Login",
+  name: "GlobalLogin",
   components: {
     Footer,
     NSpace,

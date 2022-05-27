@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "DebateWiki"
-version = "0.1.0-alpha.0"
+version = "0.1.0"
 description = "A wiki that only allows valid arguments to make it into its pages."
-authors = ["Taven <taven@outlook.in>"]
+authors = ["Taven <taven@opendebates.net>"]
 license = "Apache-2.0"
 readme = "README.md"
 homepage = "https://github.com/OpenDebates/DebateWiki"
@@ -17,12 +17,12 @@ keywords = [
 classifiers = [
     "Development Status :: 1 - Planning",
 	"Environment :: Web Environment",
-	"Framework :: AsyncIO",
+	"Framework :: FastAPI",
 	"Intended Audience :: End Users/Desktop",
 	"License :: OSI Approved :: Apache Software License",
 	"Natural Language :: English",
 	"Operating System :: OS Independent",
-    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Wiki"
 ]
 packages = [
@@ -40,38 +40,31 @@ include = [
     "tests/*",
     "tox.ini",
     "poetry.lock",
-    "Frontend/*"
+    "frontend/*"
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 toml = "^0.10.2"
-schema = "^0.7.4"
-uvloop = {version = "^0.15.3", optional = true}
-Jinja2 = "^3.0.1"
-uvicorn = "^0.14.0"
-aiofiles = "^0.7.0"
-asyncpg = "^0.23.0"
-tortoise-orm = {extras = ["asyncpg"], version = "^0.17.5"}
-aerich = "^0.5.4"
-loguru = "^0.5.3"
-fastapi-users = {extras = ["tortoise-orm"], version = "^6.1.1"}
+schema = "^0.7.5"
+uvloop = {version = "^0.16.0", optional = true}
+Jinja2 = "^3.1.2"
+uvicorn = "^0.17.6"
+aiofiles = "^0.8.0"
+asyncpg = "^0.25.0"
+tortoise-orm = {extras = ["asyncpg"], version = "^0.19.1"}
+aerich = "^0.6.3"
+loguru = "^0.6.0"
+fastapi-users = {extras = ["tortoise-orm"], version = "^10.0.6"}
 
 [tool.poetry.dev-dependencies]
-Sphinx = "^4.0.2"
-sphinx-rtd-theme = "^0.5.2"
-pytest = "^6.2.4"
-pytest-cov = "^2.12.1"
-tox = "^3.23.1"
-check-manifest = "^0.46"
-pylama = "^7.7.1"
-readme-renderer = {extras = ["md"], version = "^29.0"}
-Pygments = "^2.9.0"
-isort = "^5.9.1"
-twine = "^3.4.1"
-codecov = "^2.1.11"
+Sphinx = "^4.5.0"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+twine = "^4.0.0"
+codecov = "^2.1.12"
 bump2version = "^1.0.1"
-black = "^21.7b0"
+black = "^22.3.0"
 
 [tool.poetry.scripts]
 DebateWiki = 'DebateWiki.__main__:main'
